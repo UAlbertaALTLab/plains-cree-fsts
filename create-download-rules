@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Creates rules for downloading all of the files.
+
+DESTINATION=download.mk
+
+create_make_include() {
+    for file in "$@"; do
+        echo "${file}:"
+        # shellcheck disable=SC2016
+        printf '\tmkdir -p $(dir $@)\n'
+        # shellcheck disable=SC2016
+        printf '\t$(CURL) $(HTTP_PREFIX)/%s -o $@\n' "${file}"
+    done
+}
+
+create_make_include "$@" > $DESTINATION

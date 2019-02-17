@@ -1,0 +1,95 @@
+! Copyright © 2015–2019 Alberta Language Technology Lab (ALTLab)
+! http://altlab.artsrn.ualberta.ca/
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU Affero General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version.
+!
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! GNU Affero General Public License for more details.
+!
+! You should have received a copy of the GNU Affero General Public License
+! along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+!! !!Plains Cree pronouns
+
+!! There are more pronoums to be added here.
+
+LEXICON Pronoun !!= @CODE@
+
+ Personal ;
+ Interrogative ;
+ Indefinite ;
+ Demonstrative ;
+
+LEXICON Personal !!= @CODE@ \\
+niya+Pron+Pers+1Sg:niya # ; !!= @CODE@
+niya+Pron+Pers+1Sg:nîya # ; !!= @CODE@ 
+kiya+Pron+Pers+2Sg:kiya # ; !!= @CODE@
+kiya+Pron+Pers+2Sg:kîya # ; 
+wiya+Pron+Pers+3Sg:wiya # ;
+wiya+Pron+Pers+3Sg:wîya # ;
+niyanân+Pron+Pers+1Pl:niyanân # ;
+niyanân+Pron+Pers+1Pl:nîyanân # ;
+kiyânaw+Pron+Pers+12Pl:kiyânaw # ;
+kiyânaw+Pron+Pers+12Pl:kîyânaw # ;
+kiyawâw+Pron+Pers+2Pl:kiyawâw # ;
+kiyawâw+Pron+Pers+2Pl:kîyawâw # ;
+wiyawâw+Pron+Pers+3Pl:wiyawâw # ;
+wiyawâw+Pron+Pers+3Pl:wîyawâw # ;
+
+nîsta+Pron+Pers+1Sg+Incl:nîsta # ;
+kîsta+Pron+Pers+2Sg+Incl:kîsta # ;
+wîsta+Pron+Pers+3Sg+Incl:wîsta # ;
+nîstanân+Pron+Pers+1Pl+Incl:nîstanân # ;
+kîstanaw+Pron+Pers+12Pl+Incl:kîstanaw # ;
+kîstawâw+Pron+Pers+2Pl+Incl:kîstawâw # ;
+wîstawâw+Pron+Pers+3Pl+Incl:wîstawâw # ;
+
+
+LEXICON Interrogative  !!= @CODE@ \\
+awîna+Pron+Interr+Sg:awîna # "who,whose" ;!!= @CODE@
+awîna+Pron+Interr+Pl:awîniki # "who" ;!!= @CODE@
+kîkwây+Pron+Interr+Sg:kîkwây # "what" ;
+kîkwây+Pron+Interr+Pl:kîkwây # "what" ; !Wolvengrey
+kîkwây+Pron+Interr+Pl:kîkwâya # "what" ;
+tânitowahk+Pron+Interr+Sg:tânitowahk # "what kind" ;
+
+LEXICON Indefinite !!= @CODE@ \\
+awiyak+Pron+Indef+AN+Sg:awiyak # "someone" ; !!= @CODE@
+awiyak+Pron+Indef+AN+Pl:awiyakak # "some people" ;!!= @CODE@
+
+LEXICON Demonstrative !!= @CODE@   \\
+!! ANIMATE \\
+awa+Pron+Dem+Prox+AN+Sg:awa # "this" ; !!= @CODE@
+awa+Pron+Dem+Prox+AN+Pl:ôki # "these" ; !!= @CODE@
+
+awa+Pron+Dem+Med+AN+Sg:ana # "that" ;
+awa+Pron+Dem+Med+AN+Pl:aniki # "those" ;
+
+awa+Pron+Dem+Dist+AN+Sg:nâha # "that yonder" ;
+awa+Pron+Dem+Dist+AN+Pl:nêki # "those yonder" ;
+
+!! INANIMATE \\
+
+ôma+Pron+Dem+Prox+IN+Sg:ôma # "this" ; !!= @CODE@
+ôma+Pron+Dem+Prox+IN+Pl:ôhi # "these" ; !!= @CODE@
+
+ôma+Pron+Dem+Med+IN+Sg:anima # "that" ;
+ôma+Pron+Dem+Med+IN+Pl:anihi # "those" ;
+
+ôma+Pron+Dem+Dist+IN+Sg:nêma # "that yonder" ;
+ôma+Pron+Dem+Dist+IN+Pl:nêhi # "those yonder" ;
+
+! Let us say a pronoun ôma without a noun is a definite, not a demonstrative
+ôma+Pron+Def+Prox+IN+Sg:ôma # "this one" ; !!= @CODE@
+ôma+Pron+Def+Prox+IN+Pl:ôhi # "these one" ; !!= @CODE@
+
+ôma+Pron+Def+Med+IN+Sg:anima # "that one" ;
+ôma+Pron+Def+Med+IN+Pl:anihi # "those one" ;
+
+ôma+Pron+Def+Dist+IN+Sg:nêma # "that yonder one" ;
+ôma+Pron+Def+Dist+IN+Pl:nêhi # "those yonder one" ;
