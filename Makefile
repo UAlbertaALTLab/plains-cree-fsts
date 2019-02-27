@@ -15,21 +15,22 @@
 
 CURL = curl --fail --silent
 
-UPSTREAM_INCLUDE := src/morphological-fst-sources.mk
+LIST_OF_FST_SOURCES := src/morphological-fst-sources.mk
 FST_FILES = morphological-fst-rules.mk $(PHONOLOGY) $(ORTHOGRAPHY) $(MORPHOLOGY)
 REQUIRED_FILES = LICENCE AUTHORS $(addprefix src/,$(FST_FILES))
+DOWNLOAD_RULES = libexec/download.mk
 
 HTTP_PREFIX := https://gtsvn.uit.no/langtech/trunk/langs/crk
 
 all: download
 
-include src/morphological-fst-sources.mk
-include download.mk
+include $(LIST_OF_FST_SOURCES)
+include $(DOWNLOAD_RULES)
 
-$(UPSTREAM_INCLUDE):
-	curl --fail --silent -o $@ $(HTTP_PREFIX)/$(UPSTREAM_INCLUDE)
+$(LIST_OF_FST_SOURCES):
+	curl --fail --silent -o $@ $(HTTP_PREFIX)/$(LIST_OF_FST_SOURCES)
 
-download.mk: create-download-rules
+$(DOWNLOAD_RULES): libexec/create-download-rules
 	./$< $(REQUIRED_FILES)
 
 download: $(REQUIRED_FILES)
