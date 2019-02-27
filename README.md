@@ -1,16 +1,39 @@
 Plains Cree FSTs
 ================
 
-A mirror of the Plains Cree finite-state transducers (FSTs) .
+A mirror of the Plains Cree morphological finite-state transducer (FSTs)
+source code.
 
-The official FSTs, with all of the bells and whistles is maintained at
-https://gtsvn.uit.no/langtech/trunk/langs/crk/.
+The canonical source code for the FSTs, with derivational FSTs, and more
+are available at https://gtsvn.uit.no/langtech/trunk/langs/crk/.
+
+Usage
+-----
+
+Using the [HFST](https://github.com/hfst/hfst) application suite:
+
+    $ echo "ewapamat" | hfst-optimized-lookup -q src/crk-descriptive-analyzer.hfstol
+    ewapamat	PV/e+wâpamêw+V+TA+Cnj+Prs+2Sg+3SgO+Err/Orth
+    ewapamat	PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO+Err/Orth
+
+    $ echo "PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO" | hfst-optimized-lookup src/crk-normative-generator.hfstol
+    PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO	ê-wâpamât
+
 
 Citation
 --------
 
-If you use this work in an academic context, please cite the following
-papers:
+If you use this work in an academic context, use this to cite the
+morphological FST:
+
+    @misc{arppe2019finite,
+        title = {Finite-state transducer-based computational model of {Plains Cree} morphology},
+        author={Arppe, Antti Harrigan, Atticus and Schmirler, Katherine and Antonsen, Lene and Trosterud, Trond and N{\o}rsteb{\o} Moshagen, Sjur and Silfverberg, Miikka and Wolvengrey, Arok and Snoek, Conor and Lachler, Jordan and Santos, Eddie Antonio and Okim{\={a}}sis, Jean and Thunder, Dorothy},
+        howpublished = {\url{https://gtsvn.uit.no/langtech/trunk/langs/crk/}},
+        year = {2014--2019}
+    }
+
+You may also cite these publications:
 
     @inproceedings{snoek2014modeling,
       title={Modeling the noun morphology of Plains Cree},
