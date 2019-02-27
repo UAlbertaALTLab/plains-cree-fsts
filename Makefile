@@ -15,17 +15,15 @@
 
 CURL = curl --fail --silent
 
-# TODO: change the name of this file in upstream
-# TODO: I called it 'MORPHOLGY' in upstream. Fix it.
-UPSTREAM_INCLUDE := src/quick.mk
-FST_FILES = $(PHONOLOGY) $(ORTHOGRAPHY) $(MORPHOLOGY)
+UPSTREAM_INCLUDE := src/morphological-fst-sources.mk
+FST_FILES = morphological-fst-rules.mk $(PHONOLOGY) $(ORTHOGRAPHY) $(MORPHOLOGY)
 REQUIRED_FILES = LICENCE AUTHORS $(addprefix src/,$(FST_FILES))
 
 HTTP_PREFIX := https://gtsvn.uit.no/langtech/trunk/langs/crk
 
 all: download
 
-include src/fst-files.mk
+include src/morphological-fst-sources.mk
 include download.mk
 
 $(UPSTREAM_INCLUDE):
