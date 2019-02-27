@@ -4,6 +4,9 @@ LICENCE:
 AUTHORS:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/AUTHORS -o $@
+src/morphological-fst-rules.mk:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/morphological-fst-rules.mk -o $@
 src/phonology/crk-phon.twolc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/phonology/crk-phon.twolc -o $@

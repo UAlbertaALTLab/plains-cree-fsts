@@ -2,7 +2,7 @@
 
 # Creates rules for downloading all of the files.
 
-DESTINATION=download.mk
+DESTINATION=libexec/download.mk
 
 create_make_include() {
     for file in "$@"; do
@@ -14,4 +14,4 @@ create_make_include() {
     done
 }
 
-create_make_include "$@" > $DESTINATION
+create_make_include "$@" > "$DESTINATION"
