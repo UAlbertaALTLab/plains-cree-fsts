@@ -13,31 +13,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-CURL = curl --fail --silent
+fsts: crk-descriptive-analyzer.hfstol crk-normative-generator.hfstol
 
-LIST_OF_FST_SOURCES := src/morphological-fst-sources.mk
-FST_FILES = morphological-fst-rules.mk $(PHONOLOGY) $(ORTHOGRAPHY) $(MORPHOLOGY)
-REQUIRED_FILES = LICENCE AUTHORS $(addprefix src/,$(FST_FILES))
-DOWNLOAD_RULES = libexec/download.mk
-
-HTTP_PREFIX := https://gtsvn.uit.no/langtech/trunk/langs/crk
-
-all: fsts
-
-include $(LIST_OF_FST_SOURCES)
-include $(DOWNLOAD_RULES)
-
-fsts:
-	make -C src/
-
-download: $(REQUIRED_FILES)
-
-
-$(LIST_OF_FST_SOURCES):
-	curl --fail --silent -o $@ $(HTTP_PREFIX)/$(LIST_OF_FST_SOURCES)
-
-$(DOWNLOAD_RULES): libexec/create-download-rules
-	./$< $(REQUIRED_FILES)
-
-
-.PHONY: download fsts
+include morphological-fst-sources.mk
+include morphological-fst-rules.mk
