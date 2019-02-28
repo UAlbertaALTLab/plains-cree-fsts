@@ -1,19 +1,39 @@
 Plains Cree FSTs
 ================
 
-A mirror of the Plains Cree morphological finite-state transducer (FSTs)
-source code.
+[![Build Status](https://travis-ci.org/UAlbertaALTLab/plains-cree-fsts.svg?branch=master)](https://travis-ci.org/UAlbertaALTLab/plains-cree-fsts)
+
+
+kîkwây ôma?
+-----------
+
+This is a mirror of the **Plains Cree morphological finite-state
+transducers** (FSTs) source code. The FSTs can **analyze** and
+**generate** nêhiyawêwin word forms.
+
+âh?
+---
+
+You can use the FSTs to **explain the grammar** (analysis) of a nêhiyawêwin words:
+
+    kohkom -> nôhkom+N+A+D+Px2Sg+Sg
+
+And you can use the models to **generate** a word, based on
+a grammatical description:
+
+    nôhkom+N+A+D+Px1Pl+Sg -> nôhkominân
 
 The canonical source code for the FSTs, with derivational FSTs, and more
 are available at https://gtsvn.uit.no/langtech/trunk/langs/crk/.
 
-Download
---------
+Download the FSTs
+-----------------
 
 Download compiled FSTS on the [releases page](https://github.com/UAlbertaALTLab/plains-cree-fsts/releases)!
 
 You can use \*.hfstol files with `hfst-optimized-lookup` and \*.fomabin
-with `flookup`.
+with `flookup`. You can also use the \*.fomabin in Python using
+[fst-lookup](https://github.com/eddieantonio/fst-lookup).
 
 Usage
 -----
@@ -44,10 +64,10 @@ If you use this work in an academic context, use this to cite the
 morphological FST:
 
     @misc{arppe2019finite,
-        title = {Finite-state transducer-based computational model of {Plains Cree} morphology},
-        author={Arppe, Antti Harrigan, Atticus and Schmirler, Katherine and Antonsen, Lene and Trosterud, Trond and N{\o}rsteb{\o} Moshagen, Sjur and Silfverberg, Miikka and Wolvengrey, Arok and Snoek, Conor and Lachler, Jordan and Santos, Eddie Antonio and Okim{\={a}}sis, Jean and Thunder, Dorothy},
-        howpublished = {\url{https://gtsvn.uit.no/langtech/trunk/langs/crk/}},
-        year = {2014--2019}
+        Author={Arppe, Antti and Harrigan, Atticus and Schmirler, Katherine and Antonsen, Lene and Trosterud, Trond and N{\o}rsteb{\o} Moshagen, Sjur and Silfverberg, Miikka and Wolvengrey, Arok and Snoek, Conor and Lachler, Jordan and Santos, Eddie Antonio and Okim{\=a}sis, Jean and Thunder, Dorothy},
+        Howpublished={\url{https://gtsvn.uit.no/langtech/trunk/langs/crk/}},
+        Title={Finite-state transducer-based computational model of {Plains Cree} morphology},
+        Year={2014--2019}
     }
 
 You may also cite these publications:
