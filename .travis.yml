@@ -20,5 +20,3 @@ deploy:
     - src/crk-descriptive-analyzer.hfstol
     - src/crk-normative-generator.fomabin
     - src/crk-normative-generator.hfstol
-  on:
-    tags: true
