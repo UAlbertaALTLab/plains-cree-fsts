@@ -22,4 +22,6 @@ deploy:
     - src/crk-normative-generator.hfstol
   skip_cleanup: true
   on:
-    branch: release
+    # Deploy when the branch has set a tag in the predeploy stage.
+    all_branches: true
+    condition: -n $TRAVIS_TAG
