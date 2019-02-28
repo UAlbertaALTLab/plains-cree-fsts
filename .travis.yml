@@ -1,8 +1,24 @@
 language: c
 install:
-  - curl -sfLO http://apertium.projectjj.com/apt/nightly/pool/main/h/hfst/hfst_3.15.0+g3702~c2f13c6e-1~trusty1_amd64.deb
-  - curl -sfLO http://apertium.projectjj.com/apt/nightly/pool/main/h/hfst/libhfst52_3.15.0+g3702~c2f13c6e-1~trusty1_amd64.deb
-  - sudo dpkg --install libhfst??_*.deb
-  - sudo dpkg --install hfst_*.deb
+- curl -sfLO http://apertium.projectjj.com/apt/nightly/pool/main/h/hfst/hfst_3.15.0+g3702~c2f13c6e-1~trusty1_amd64.deb
+- curl -sfLO http://apertium.projectjj.com/apt/nightly/pool/main/h/hfst/libhfst52_3.15.0+g3702~c2f13c6e-1~trusty1_amd64.deb
+- sudo dpkg --install libhfst??_*.deb
+- sudo dpkg --install hfst_*.deb
 script:
-  - make fsts
+- make -j fsts
+before_deploy:
+- git config --local user.name "Alberta Language Technology Lab"
+- git config --local user.email "altlab@ualberta.ca"
+- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+- git tag $TRAVIS_TAG
+deploy:
+  provider: releases
+  api_key:
+    secure: Q8RQiuKQwDTslt6XhRxUvp3T3knHJRQmgTKmZiq63nJv1vdqauip22cN5aqDn12bcXk0mvI5L94LssJo9WVZREaWm2z/rTJITVF9DKCn8wpdiVkiF62DaDJpROq/dgO9xhuPHiNWxfIEHXRRjQelVQqhoG2rxApHmwzbxY29wLHRYwd/SjivGY5ckNVct3XfSJhXKpk3j7h8ZpaD0cvaM+tuJ+mDRBjjoNLpga5t/eTeDbAmrIkppUdrlg+IosUCZJbKWlJ14a7GPNTtqyHPwS4KNaAR0SIEHKcOGbbLgBGiYXvSWqqMweaONzU9Cu3k3YY1yRUetObJbllZZTWCfOQAVOT/NPlo1SztWuUznC2CB96aVba+T3gUx/Rd/E+h9HqJFVGY9IvW64M0c2qyLbU5TK3R8H2V7AOHnyHQ7yPUR1vj4qdM3t2pzi4YoQdizAzMtPKUmYKScwJ4Ie9HOLPh6D6dlPtrKnLvNGmhH/a99/pabc8nTBKQU26eXTt3VeOZVOQpFzmMbHUa9lk5GECDpj5Z0LnUy/+ajPtDxhiZtx2ja9YrN1VroVguQEJ1c6HUl7CC0Q1TvfNJYzZymtube4JWIxjhB7r/dU8o1UvMtfYsc1ARkJbSjBqdbl7CQxVamihbo1iJ+kCrmyCP7pyeW3wjJNRdGeBPYWPOjWE=
+  file:
+    - src/crk-descriptive-analyzer.fomabin
+    - src/crk-descriptive-analyzer.hfstol
+    - src/crk-normative-generator.fomabin
+    - src/crk-normative-generator.hfstol
+  on:
+    tags: true
