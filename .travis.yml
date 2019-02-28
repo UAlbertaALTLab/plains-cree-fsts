@@ -21,3 +21,5 @@ deploy:
     - src/crk-normative-generator.fomabin
     - src/crk-normative-generator.hfstol
   skip_cleanup: true
+  on:
+    branch: release
