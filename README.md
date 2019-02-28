@@ -7,16 +7,33 @@ source code.
 The canonical source code for the FSTs, with derivational FSTs, and more
 are available at https://gtsvn.uit.no/langtech/trunk/langs/crk/.
 
+Download
+--------
+
+Download compiled FSTS on the [releases page](https://github.com/UAlbertaALTLab/plains-cree-fsts/releases)!
+
+You can use \*.hfstol files with `hfst-optimized-lookup` and \*.fomabin
+with `flookup`.
+
 Usage
 -----
 
 Using the [HFST](https://github.com/hfst/hfst) application suite:
 
-    $ echo "ewapamat" | hfst-optimized-lookup -q src/crk-descriptive-analyzer.hfstol
+    $ echo "ewapamat" | hfst-optimized-lookup -q crk-descriptive-analyzer.hfstol
     ewapamat	PV/e+wâpamêw+V+TA+Cnj+Prs+2Sg+3SgO+Err/Orth
     ewapamat	PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO+Err/Orth
 
-    $ echo "PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO" | hfst-optimized-lookup src/crk-normative-generator.hfstol
+    $ echo "PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO" | hfst-optimized-lookup crk-normative-generator.hfstol
+    PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO	ê-wâpamât
+
+Using [Foma](https://fomafst.github.io/):
+
+    $ echo "ewapamat" | flookup crk-descriptive-analyzer.fomabin
+    ewapamat	PV/e+wâpamêw+V+TA+Cnj+Prs+2Sg+3SgO+Err/Orth
+    ewapamat	PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO+Err/Orth
+
+    $ echo "PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO" | flookup crk-normative-generator.fomabin
     PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO	ê-wâpamât
 
 
