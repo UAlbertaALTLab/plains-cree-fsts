@@ -91,6 +91,17 @@ You may also cite these publications:
       publisher={Springer}
     }
 
+Maintainer tools
+----------------
+
+To sync the FST sources with the upstream SVN repository, re-download
+the sources list:
+
+    make -B src/morphological-fst-sources.mk
+
+Then download all the sources again:
+
+    make -j -B download
 
 License
 -------
