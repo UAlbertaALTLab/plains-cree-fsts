@@ -57,6 +57,49 @@ Using [Foma](https://fomafst.github.io/):
     PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO	ê-wâpamât
 
 
+Working on the FSTs
+-------------------
+
+The following instructions assume you're working in a Linux/macOS/Unix
+command line.
+
+### Dependencies
+
+You'll need (GNU) Make, and HFST. If you're on macOS/Linux, you probably already have `make`
+installed. HFST can be installed on macOS with Homebrew by typing:
+
+    brew install ualbertaaltlab/hfst/hfst
+
+### Building
+
+To build the FSTs from scratch, type the following in the root
+directory:
+
+    make -j fsts
+
+The resultant \*.hfstol and \*.foma files will be placed in `src/`.
+
+Explanation:
+
+ - `make`: run GNU Make
+ - `-j`: run jobs on as many CPU cores as possible
+ - `fsts`: the thing you want to make are the \*.hfstol and \*.foma FSTs.
+
+If you see the message,
+
+    make[1]: Nothing to be done for `fsts'.
+
+This means the FSTs are up-to-date, so there's no need to remake them.
+If you want to remake them anyway, add the `-B` flag when using make:
+
+    make -j -B fsts
+
+### Modifying
+
+Change the `*.lexc`, `*.regexp`, and `*.twolc` files in `src/`, then run
+`make -j fsts` to see the changes.
+
+
 Citation
 --------
 
