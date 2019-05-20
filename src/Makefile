@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-FSTS := crk-descriptive-analyzer.hfst crk-normative-generator.hfst
+FSTS := crk-descriptive-analyzer.hfst crk-normative-generator.hfst crk-strict-analyzer.hfst
 fsts: $(FSTS:.hfst=.hfstol) $(FSTS:.hfst=.fomabin)
 
 include morphological-fst-sources.mk
