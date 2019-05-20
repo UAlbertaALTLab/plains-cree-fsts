@@ -20,27 +20,30 @@ src/morphology/root.lexc:
 src/morphology/affixes/noun_affixes.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/affixes/noun_affixes.lexc -o $@
+src/morphology/affixes/propernouns.lexc:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/morphology/affixes/propernouns.lexc -o $@
+src/morphology/affixes/symbols.lexc:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/morphology/affixes/symbols.lexc -o $@
 src/morphology/affixes/verb_affixes.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/affixes/verb_affixes.lexc -o $@
 src/morphology/stems/abbreviations.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/abbreviations.lexc -o $@
-src/morphology/stems/crk-propernouns.lexc:
-	mkdir -p $(dir $@)
-	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/crk-propernouns.lexc -o $@
 src/morphology/stems/noun_stems.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/noun_stems.lexc -o $@
 src/morphology/stems/numerals.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/numerals.lexc -o $@
-src/morphology/stems/particles.lexc:
-	mkdir -p $(dir $@)
-	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/particles.lexc -o $@
-src/morphology/stems/pronouns.lexc:
-	mkdir -p $(dir $@)
-	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/pronouns.lexc -o $@
 src/morphology/stems/verb_stems.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/verb_stems.lexc -o $@
+src/morphology/stems/pronouns.lexc:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/pronouns.lexc -o $@
+src/morphology/stems/particles.lexc:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/particles.lexc -o $@
