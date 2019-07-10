@@ -24,9 +24,9 @@ MORPHOLOGY = morphology/root.lexc \
   morphology/stems/abbreviations.lexc \
   morphology/stems/noun_stems.lexc \
   morphology/stems/numerals.lexc \
-  morphology/stems/particles.lexc \
+  morphology/stems/verb_stems.lexc \
   morphology/stems/pronouns.lexc \
-  morphology/stems/verb_stems.lexc
+  morphology/stems/particles.lexc
 
 EXTRA_MORPHOLOGY = \
   morphology/generated_files/eng-crk-propernouns.lexc \

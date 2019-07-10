@@ -23,9 +23,6 @@ src/morphology/affixes/noun_affixes.lexc:
 src/morphology/affixes/propernouns.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/affixes/propernouns.lexc -o $@
-src/morphology/affixes/symbols.lexc:
-	mkdir -p $(dir $@)
-	$(CURL) $(HTTP_PREFIX)/src/morphology/affixes/symbols.lexc -o $@
 src/morphology/affixes/verb_affixes.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/affixes/verb_affixes.lexc -o $@
