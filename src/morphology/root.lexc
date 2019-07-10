@@ -64,6 +64,7 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 +Dem        !!= * @CODE@ Demonstrative
 +Def	    !!= * @CODE@ This is the intransitive demonstrative, i.e. the definite.
 +Indef      !!= * @CODE@ This is the indefinite demonstrative
++Interr     !!= * @CODE@
 +Prox	    !!= * @CODE@ Demonstrative Proximate
 +Med	    !!= * @CODE@ Demonstrative Medial
 +Dist	    !!= * @CODE@ Demonstrative Distal
