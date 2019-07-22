@@ -57,6 +57,46 @@ Using [Foma](https://fomafst.github.io/):
     PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO	ê-wâpamât
 
 
+Bulk lookups
+------------
+
+If you want to generate a large amount of word forms all at once, it is
+recommended that you use `hfst-optimized-lookup` command, as this is the
+fastest way to generate lookups.
+You will provide analyses, one per line. For example, say I want to
+conjugate `mîcisow`, and I have a file of analyses called `conjugations.txt`:
+
+```
+mîcisow+V+AI+Ind+Prs+1Sg
+mîcisow+V+AI+Ind+Prs+2Sg
+mîcisow+V+AI+Ind+Prs+3Sg
+PV/e+mîcisow+V+AI+Cnj+Prs+1Sg
+PV/e+mîcisow+V+AI+Cnj+Prs+2Sg
+PV/e+mîcisow+V+AI+Cnj+Prs+3Sg
+```
+
+You can pipe this into `hfst-optimized-lookup`:
+
+```sh
+$ cat conjugations.txt | hfst-optimized-lookup crk-normative-generator.hfstol
+mîcisow+V+AI+Ind+Prs+1Sg	nimîcison
+
+mîcisow+V+AI+Ind+Prs+2Sg	kimîcison
+
+mîcisow+V+AI+Ind+Prs+3Sg	mîcisow
+
+PV/e+mîcisow+V+AI+Cnj+Prs+1Sg	ê-mîcisoyân
+
+PV/e+mîcisow+V+AI+Cnj+Prs+2Sg	ê-mîcisoyan
+
+PV/e+mîcisow+V+AI+Cnj+Prs+3Sg	ê-mîcisot
+```
+
+You can use the two-column output to map the input to the generated word
+form. This is useful, since some analyses have multiple possible word
+forms (e.g., `cactus+Pl` in English can be "cactuses" or "cacti").
+
+
 Working on the FSTs
 -------------------
 
