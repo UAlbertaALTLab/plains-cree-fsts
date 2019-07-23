@@ -32,8 +32,8 @@ Download the FSTs
 Download compiled FSTS on the [releases page](https://github.com/UAlbertaALTLab/plains-cree-fsts/releases)!
 
 You can use \*.hfstol files with `hfst-optimized-lookup` and \*.fomabin
-with `flookup`. You can also use the \*.fomabin in Python using
-[fst-lookup](https://github.com/eddieantonio/fst-lookup).
+with `flookup`. You can also use the \*.fomabin and \*.hfstol file in Python using
+[fst-lookup](https://github.com/eddieantonio/fst-lookup) and [hfstol](https://github.com/Madoshakalaka/hfstol) respectively.
 
 Usage
 -----
