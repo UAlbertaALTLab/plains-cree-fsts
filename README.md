@@ -35,6 +35,7 @@ You can use \*.hfstol files with `hfst-optimized-lookup` and \*.fomabin
 with `flookup`. You can also use the \*.fomabin and \*.hfstol file in Python using
 [fst-lookup](https://github.com/eddieantonio/fst-lookup) and [hfstol](https://github.com/Madoshakalaka/hfstol) respectively.
 
+
 Usage
 -----
 
@@ -55,6 +56,26 @@ Using [Foma](https://fomafst.github.io/):
 
     $ echo "PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO" | flookup crk-normative-generator.fomabin
     PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO	ê-wâpamât
+
+
+Using [fst-lookup](https://github.com/eddieantonio/fst-lookup):
+
+
+```python
+from fst_lookup import FST
+
+analyzer = FST.from_file('crk-descriptive-analyzer.fomabin')
+for analysis in analyzer.analyze('ewapamat'):
+  print(analysis)
+# prints: ('PV/e+', 'wâpamêw', '+V', '+TA', '+Cnj', '+Prs', '+2Sg', '+3SgO', '+Err/Orth')
+#         ('PV/e+', 'wâpamêw', '+V', '+TA', '+Cnj', '+Prs', '+3Sg', '+4Sg/PlO', '+Err/Orth')
+
+# NB: You must invert the labels on the generator because this FST is "upside-down"!
+generator = FST.from_file('crk-normative-generator.fomabin', labels='invert')
+for wordform in generator.generate('PV/e+' 'wâpamêw' '+V' '+TA' '+Cnj' '+Prs' '+3Sg' '+4Sg/PlO'):
+  print(wordform)
+# prints: ê-wâpamât
+```
 
 
 Bulk lookups
