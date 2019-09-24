@@ -16,7 +16,7 @@
 CURL = curl --fail --silent
 
 LIST_OF_FST_SOURCES := src/morphological-fst-sources.mk
-FST_FILES = morphological-fst-rules.mk $(PHONOLOGY) $(ORTHOGRAPHY) $(MORPHOLOGY)
+FST_FILES = morphological-fst-rules.mk $(ALL_SOURCES)
 REQUIRED_FILES = LICENCE AUTHORS $(addprefix src/,$(FST_FILES))
 DOWNLOAD_RULES = libexec/download.mk
 

@@ -8,12 +8,6 @@ AUTHORS:
 src/morphological-fst-rules.mk:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphological-fst-rules.mk -o $@
-src/phonology/crk-phon.twolc:
-	mkdir -p $(dir $@)
-	$(CURL) $(HTTP_PREFIX)/src/phonology/crk-phon.twolc -o $@
-src/orthography/spellrelax.regex:
-	mkdir -p $(dir $@)
-	$(CURL) $(HTTP_PREFIX)/src/orthography/spellrelax.regex -o $@
 src/morphology/root.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/root.lexc -o $@
@@ -44,3 +38,12 @@ src/morphology/stems/pronouns.lexc:
 src/morphology/stems/particles.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/particles.lexc -o $@
+src/phonology/crk-phon.twolc:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/phonology/crk-phon.twolc -o $@
+src/phonology/crk-phon-morph-bound.twolc:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/phonology/crk-phon-morph-bound.twolc -o $@
+src/orthography/spellrelax.regex:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/orthography/spellrelax.regex -o $@
