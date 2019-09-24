@@ -1,8 +1,8 @@
 language: c
 dist: xenial
 install:
-- curl -sfLO http://apertium.projectjj.com/apt/release/pool/main/h/hfst/hfst_3.15.0-1~xenial1_amd64.deb
-- curl -sfLO http://apertium.projectjj.com/apt/release/pool/main/h/hfst/libhfst52_3.15.0-1~xenial1_amd64.deb
+- curl -sfLO http://apertium.projectjj.com/apt/release/pool/main/h/hfst/hfst_3.15.1-1~xenial1_amd64.deb
+- curl -sfLO http://apertium.projectjj.com/apt/release/pool/main/h/hfst/libhfst52_3.15.1-1~xenial1_amd64.deb
 - sudo dpkg --install libhfst??_*.deb
 - sudo dpkg --install hfst_*.deb
 script:
