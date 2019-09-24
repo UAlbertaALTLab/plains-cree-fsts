@@ -18,6 +18,8 @@ deploy:
     - src/crk-normative-generator.hfstol
     - src/crk-strict-analyzer.fomabin
     - src/crk-strict-analyzer.hfstol
+    - src/crk-normative-generator-with-morpheme-boundaries.fomabin
+    - src/crk-normative-generator-with-morpheme-boundaries.hfstol
   skip_cleanup: true
   on:
     tags: true
