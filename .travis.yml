@@ -1,9 +1,8 @@
 os: osx
-addons:
-  homebrew:
-    taps: UAlbertaALTLab/UAlbertaALTLab
-    packages:
-      - hfst
+install:
+  - brew tap UAlbertaALTLab/UAlbertaALTLab
+  - brew update
+  - brew install UAlbertaALTLab/UAlbertaALTLab/hfst
 
 script:
 - make -j fsts
