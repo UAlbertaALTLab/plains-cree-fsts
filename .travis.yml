@@ -1,10 +1,11 @@
 os: osx
-language: minimal
+language: generic
 
-install:
-  - brew tap UAlbertaALTLab/UAlbertaALTLab
-  - brew update
-  - brew install UAlbertaALTLab/UAlbertaALTLab/hfst
+addons:
+  homebrew:
+    taps: UAlbertaALTLab/UAlbertaALTLab
+    packages: UAlbertaALTLab/UAlbertaALTLab/hfst
+    update: true
 
 script:
 - make -j fsts
