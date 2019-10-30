@@ -1,4 +1,6 @@
 os: osx
+language: minimal
+
 install:
   - brew tap UAlbertaALTLab/UAlbertaALTLab
   - brew update
