@@ -60,10 +60,12 @@ crk-descriptive-analyzer.hfst: crk-orth.hfst crk-strict-analyzer.hfst
 	-@echo "$(_EMPH)Composing spelling relaxation transducer with normative analyzer transducer to create descriptive analyzer.$(_RESET)"
 	hfst-compose -F -1 $(word 1, $^) -2 $(word 2, $^) | hfst-minimize - -o $@
 
+crk-orth.foma: $(ORTHOGRAPHY)
+	(printf "regex"; cat $^ | sed 's/#.*$$//' | tr $$'\n' ' '; echo ; echo "invert" ) > $@
+
 # XXX: something is UP with the new spell relax, so manually compose the orthographic fst.
 crk-descriptive-analyzer.fomabin: crk-orth.fomabin crk-strict-analyzer.fomabin
 	foma -e "load $(word 1, $^)" \
-		-e "invert" \
 		-e "define Orthography;" \
 		-e "load $(word 2, $^)" \
 		-e "define NormativeAnalyzer;" \
@@ -74,3 +76,6 @@ crk-descriptive-analyzer.fomabin: crk-orth.fomabin crk-strict-analyzer.fomabin
 
 %.hfstol: %.hfst
 	hfst-fst2fst -O -i $< -o $@
+
+%.fomabin: %.foma
+	foma -l $< -e "save stack $@" -s
