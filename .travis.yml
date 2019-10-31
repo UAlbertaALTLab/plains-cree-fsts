@@ -3,8 +3,8 @@ language: generic
 
 addons:
   homebrew:
-    taps: UAlbertaALTLab/UAlbertaALTLab
-    packages: UAlbertaALTLab/UAlbertaALTLab/hfst
+    taps: ualbertaaltlab/hfst
+    packages: UAlbertaALTLab/hfst/hfst
     update: true
 
 script:
