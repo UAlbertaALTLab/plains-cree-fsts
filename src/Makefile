@@ -21,10 +21,3 @@ fsts: $(FSTS:.hfst=.hfstol) $(FSTS:.hfst=.fomabin)
 
 include morphological-fst-sources.mk
 include morphological-fst-rules.mk
-
-%.fomabin: %.hfst
-	@# HFST has the upper and lower sides inverted (I don't blame them)
-	@# but this inverts it back so Foma users aren't confused.
-	hfst-invert -i $< -o - |\
-		hfst-fst2fst --foma --use-backend-format -i - -o - |\
-		gzip > $@

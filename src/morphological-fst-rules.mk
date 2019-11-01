@@ -60,5 +60,38 @@ crk-descriptive-analyzer.hfst: crk-orth.hfst crk-strict-analyzer.hfst
 	-@echo "$(_EMPH)Composing spelling relaxation transducer with normative analyzer transducer to create descriptive analyzer.$(_RESET)"
 	hfst-compose -F -1 $(word 1, $^) -2 $(word 2, $^) | hfst-minimize - -o $@
 
+# HACK: Foma has issues with composing the orthographic FST, so we do it
+# explicitly:
+crk-descriptive-analyzer.fomabin: crk-orth.fomabin crk-strict-analyzer.fomabin morphological-fst-rules.mk
+	foma\
+		-e "load $(word 2, $^)" \
+		-e "invert net" \
+		-e "echo testing strict analyzer with nipâw" \
+		-e "down nipâw" \
+		-e "define crkNorm ;" \
+		-e "load $(word 1, $^)" \
+		-e "invert net" \
+		-e "echo testing orthography with nipaw" \
+		-e "down nipaw" \
+		-e "echo testing orthography with n'paw" \
+		-e "down n'paw" \
+		-e "define crkOrth ;" \
+		-e "regex crkOrth .o. crkNorm ; " \
+		-e "down nipaw" \
+		-e "down nipa" \
+		-e "down ninipan" \
+		-e "down neeyu" \
+		-e "invert net" \
+		-e "up neeyu" \
+		-e "save stack $@" \
+		-s
+
 %.hfstol: %.hfst
 	hfst-fst2fst -O -i $< -o $@
+
+%.fomabin: %.hfst
+	@# HFST has the upper and lower sides inverted (I don't blame them)
+	@# but this inverts it back so Foma users aren't confused.
+	hfst-invert -i $< -o - |\
+		hfst-fst2fst --foma --use-backend-format -i - -o - |\
+		gzip > $@
