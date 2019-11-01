@@ -2,7 +2,15 @@
 
 require_relative './fst-test-framework'
 
-FST.test('crk-descriptive-analyzer') do
-  #transduce "nipa", contains: "nipâw+V+AI+Imp+Imm+2Sg"
+FST.test('crk-strict-analyzer') do
   transduce "nipâ", contains: "nipâw+V+AI+Imp+Imm+2Sg"
+  transduce "nipâw", contains: "nipâw+V+AI+Ind+Prs+3Sg"
+end
+
+FST.test('crk-descriptive-analyzer') do
+  transduce "nipa", contains: "nipâw+V+AI+Imp+Imm+2Sg"
+  transduce "nipâ", contains: "nipâw+V+AI+Imp+Imm+2Sg"
+  transduce "n'paw", contains: "nipâw+V+AI+Ind+Prs+3Sg"
+  transduce "nin'pan", contains: "nipâw+V+AI+Ind+Prs+1Sg"
+  transduce "neeyu", contains: "niya+Pron+Pers+1Sg"
 end
