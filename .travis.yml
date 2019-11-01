@@ -1,5 +1,14 @@
+# Use homebrew installation of hfst because:
+#  - UAlbertaALTLab maintains the cask
+#  - Apertium is the most common way to install hfst on Linux but...
+#  - Apertium regularly deletes releases of hfst, breaking this build
+#  - macOS matches most of our dev machines ¯\_(ツ)_/¯
 os: osx
-language: generic
+
+# I wrote the test framework for my default Ruby, Ruby 2.3.1:
+language: ruby
+rvm:
+  - 2.3
 
 addons:
   homebrew:
@@ -7,8 +16,11 @@ addons:
     packages: UAlbertaALTLab/hfst/hfst
     update: true
 
-script:
+before_script:
 - make -j fsts
+
+script:
+- make test
 
 deploy:
   provider: releases

@@ -32,6 +32,9 @@ fsts:
 
 download: $(REQUIRED_FILES)
 
+test: fsts
+	./test/run-tests
+
 
 $(LIST_OF_FST_SOURCES):
 	curl --fail --silent -o $@ $(HTTP_PREFIX)/$(LIST_OF_FST_SOURCES)
@@ -40,4 +43,4 @@ $(DOWNLOAD_RULES): libexec/create-download-rules
 	./$< $(REQUIRED_FILES)
 
 
-.PHONY: download fsts
+.PHONY: download fsts test

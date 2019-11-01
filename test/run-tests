@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+require 'pathname'
+
+HERE = Pathname.new(__dir__).realdirpath
+FST_DIR = HERE.parent / 'src'
+raise "Bad src directory" unless FST_DIR.directory?
+
+HFST = 'hfst-lookup -q'
+FOMA = 'flookup -q'
+HFSTOL = 'hfst-optimized-lookup -q'
+
+
+
+def transduce(suite, transducer, input)
+  output = %x{echo "#{input}" | #{suite} #{transducer}}
+  format_transductions(output)
+end
+
+def format_transductions(raw_transductions)
+  lines = raw_transductions.split("\n")
+  results = lines.map do |line|
+    fields = line.split("\t")
+    input = fields[0]
+    return nil if input.nil?
+    transduction = fields[1]
+    [input, transduction]
+  end
+
+  results.reject(&:nil?)
+end
+
+def test_transduction(input, expected)
+  results = transduce(HFST, FST_DIR / 'crk-descriptive-analyzer.hfst', input)
+  relevant_tranductions = results
+    .select { |(i, _)| i == input }
+    .map {|(_, transduction)| transduction}
+
+  unless relevant_tranductions.include?(expected)
+    $stderr.puts("[HFST] could find transduction of #{input} to #{expected} in #{relevant_tranductions}")
+    exit(2)
+  end
+end
+
+test_transduction "nipa", "nipâw+V+AI+Imp+Imm+2Sg"
