@@ -13,8 +13,16 @@ rvm:
 addons:
   homebrew:
     taps: ualbertaaltlab/hfst
-    packages: UAlbertaALTLab/hfst/hfst
+    packages:
+      - UAlbertaALTLab/hfst/hfst
+      - foma
     update: true
+
+# Not really an install script; just asserting the version numbers of the FST
+# software:
+install:
+  - foma -v
+  - hfst-lookup --version
 
 before_script:
 - make -j fsts
