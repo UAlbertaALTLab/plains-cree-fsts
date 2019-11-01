@@ -74,10 +74,10 @@ c (->) j,   # English influence on spelling <c>
 
 c (->) {ch},        # English influence on spelling <c>
 c (->) {tch},       # English influence on spelling <c>
-c (->) {ts} || _ ,, # Another English influence on spelling <c>
+c (->) {ts},, # Another English influence on spelling <c>
 
-# TODO: create a rule for excessive preaspiration after stops
-h (->) 0 || [ a | i | o | â | ê | î | ô ] _ [ c | k | p | t ]    # Missing preaspiration before stops
+[..] (->) h || [ a | i | o | â | ê | î | ô ] _ [ c | k | p | t ],,  # Excessive preaspiration before stops
+   h (->) 0 || [ a | i | o | â | ê | î | ô ] _ [ c | k | p | t ]    # Missing preaspiration before stops
 
 
 ;
