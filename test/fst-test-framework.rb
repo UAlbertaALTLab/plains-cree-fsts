@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'pathname'
 
 HERE = Pathname.new(__dir__).realdirpath
@@ -66,7 +68,6 @@ class FST
   def self.test(transducer, &block)
     t = TestContext.new(transducer)
     t.instance_exec(&block)
+    puts("All FST tests passed! 🥳")
   end
 end
-
-
