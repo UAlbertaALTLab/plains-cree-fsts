@@ -18,8 +18,7 @@ Yes! Just the lemma, followed by the `+Ipc` tag!
 Examples
 --------
 
- - "êkwa" = `êkwa+Ipc`
- - "mâna" = `mâna+Ipc`
- - "ôma" = `ôma+Ipc`
- - "kîkway" = `kîkway+Ipc`
- - "êkosi" = `êkosi+Ipc`
+ - `êkwa+Ipc` = "êkwa"
+ - `mâna+Ipc` = "mâna"
+ - `kîkway+Ipc` = "kîkway"
+ - `êkosi+Ipc` = "êkosi"

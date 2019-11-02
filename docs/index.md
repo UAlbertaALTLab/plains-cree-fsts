@@ -7,10 +7,12 @@ a linguistic _analysis_.
 
 [releases]: https://github.com/UAlbertaALTLab/plains-cree-fsts/releases
 
-A few quick definitions:
 
-~ word form
-: In English, aren't "ate" and "eat" the same word? Yes, of course
+A few important definitions
+---------------------------
+
+###  word form
+In English, aren't "ate" and "eat" the same word? Yes, of course
 they're the same word -- they have the same dictionary definition! --
 but they differ in that one is past tense and one is present tense.
 These are two different <dfn>word forms</dfn> of the same word. Likewise
@@ -18,8 +20,10 @@ in Cree, <span lang="crk">nôhkom</span> and <span
 lang="crk">kôhkom</span> are the same “word” but they differ in just
 whether it's "my grandma" or "your grandma". nôhkom and kôhkom are two
 separate wordforms.
-~ lemma
-: It's impractical to refer to a word by all its possible word forms.
+
+### lemma
+
+It's impractical to refer to a word by all its possible word forms.
 Imagine an English dictionary, that prior to defining a word, enumerated
 all its possible word forms. It would read "eat/eats/ate/eaten",
 "break/breaks/broke/broken", "drink/drinks/drank/drunk", and similary for
@@ -28,6 +32,7 @@ some words having hundreds of forms, and even the ability to be creative
 with word forms! Instead we choose **one wordform** to represent them
 all. This is one word form to rule them all is called the
 <dfn>lemma</dfn>.
+
 
 How to follow along with this guide
 -----------------------------------
