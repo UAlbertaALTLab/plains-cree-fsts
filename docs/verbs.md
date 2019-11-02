@@ -45,3 +45,18 @@ kiwâpamitin is a form of _wâpamêw_:
  - Goal: `4Sg/PlO` (Obviative goal  — something is happening to **that person over there**)
 
     PV/e+wâpamêw+V+TA+Cnj+Prs+3Sg+4Sg/PlO
+
+
+Specifying Tense
+----------------
+
+TODO: write up what any of this means:
+
+<!-- https://github.com/UAlbertaALTLab/plains-cree-fsts/issues/11 -->
+
+kî-nipâw	nipâw+V+AI+Ind+Prt+3Sg
+wî-nipâw	nipâw+V+AI+Ind+Fut+Int+3Sg
+ka-nipâw	nipâw+V+AI+Ind+Fut+Def+3Sg
+
+echo PV/kaa+ohkomiw+V+AI+Cnj+Prt+1Sg | hfst-optimized-lookup --silent crk-normative-generator.hfstol
+PV/kaa+ohkomiw+V+AI+Cnj+Prt+1Sg	kâ-kî-ohkomiyân
