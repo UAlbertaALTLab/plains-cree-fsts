@@ -62,16 +62,13 @@ crk-descriptive-analyzer.hfst: crk-orth.hfst crk-strict-analyzer.hfst
 
 # HACK: Foma has issues with composing the orthographic FST, so we do it
 # explicitly:
-crk-descriptive-analyzer.fomabin: crk-orth.fomabin crk-strict-analyzer.fomabin morphological-fst-rules.mk
+crk-descriptive-analyzer.fomabin: crk-orth.fomabin crk-strict-analyzer.fomabin
 	foma\
 		-e "load $(word 2, $^)" \
 		-e "invert net" \
-		-e "echo testing strict analyzer with nipâw" \
 		-e "define crkNorm ;" \
 		-e "load $(word 1, $^)" \
 		-e "invert net" \
-		-e "echo testing orthography with nipaw" \
-		-e "echo testing orthography with n'paw" \
 		-e "define crkOrth ;" \
 		-e "regex crkOrth .o. crkNorm ; " \
 		-e "invert net" \
