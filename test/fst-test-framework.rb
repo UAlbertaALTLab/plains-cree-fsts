@@ -9,32 +9,70 @@ raise 'Bad src directory' unless FST_DIR.directory?
 EX_FAILURE = 0x41
 EX_USAGE = 0x42
 
-IMPLEMENTATIONS = {
-  hfst: { bin: 'hfst-lookup -q', ext: 'hfst' },
-  hfstol: { bin: 'hfst-optimized-lookup -q', ext: 'hfstol' },
-  foma: { bin: 'flookup -q', ext: 'fomabin' }
-}.freeze
-
 # An FST lookup implementation.
 # It knows its name, its executable path,
 # and the file extension for this kind of FST.
 class LookupImplementation
-  attr_reader :name, :bin, :ext
+  @implementations = {}
 
-  def initialize(name, bin, ext)
-    @name = name
-    @bin = bin
-    @ext = ext
+  class << self
+    def inherited(child_class)
+      @implementations[child_class.id] = child_class.new
+    end
+
+    def each(&block)
+      @implementations.each_value(&block)
+    end
+
+    def bin(value = nil)
+      value.nil? ? @bin : @bin = value
+    end
+
+    def ext(value = nil)
+      value.nil? ? @ext : @ext = value
+    end
+
+    def id(value = nil)
+      return @name = value unless value.nil?
+      return @name unless @name.nil?
+
+      name.downcase.to_sym
+    end
   end
 
-  # From a config option
-  def self.from_config(name, config)
-    new(name, config[:bin], config[:ext])
+  def id
+    self.class.id
+  end
+
+  def bin
+    self.class.bin
+  end
+
+  def ext
+    self.class.ext
   end
 
   def execute(transducer, raw_input)
     `echo "#{raw_input}" | #{bin} #{transducer}`
   end
+end
+
+# flookup
+class Foma < LookupImplementation
+  bin 'flookup -q'
+  ext 'fomabin'
+end
+
+# hfst-lookup
+class Hfst < LookupImplementation
+  bin 'hfst-lookup -q'
+  ext 'hfst'
+end
+
+# hfst-optimized-lookup
+class HfstOl < LookupImplementation
+  bin 'hfst-optimized-lookup -q'
+  ext 'hfstol'
 end
 
 def format_transductions(raw_transductions)
@@ -58,14 +96,12 @@ class TestContext
   end
 
   def transduce(input, specification)
-    IMPLEMENTATIONS.each_pair do |name, config|
-      impl = LookupImplementation.from_config(name, config)
-
-      transducer_path = FST_DIR / "#{@transducer}.#{impl.ext}"
+    LookupImplementation.each do |fst_impl|
+      transducer_path = FST_DIR / "#{@transducer}.#{fst_impl.ext}"
       expected = specification[:contains]
       raise 'Invalid specification' if expected.nil?
 
-      _run_and_filter(impl, transducer_path, input, expected)
+      _run_and_filter(fst_impl, transducer_path, input, expected)
     end
   end
 
