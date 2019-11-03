@@ -15,6 +15,28 @@ IMPLEMENTATIONS = {
   foma: { bin: 'flookup -q', ext: 'fomabin' }
 }.freeze
 
+# An FST lookup implementation.
+# It knows its name, its executable path,
+# and the file extension for this kind of FST.
+class LookupImplementation
+  attr_reader :name, :bin, :ext
+
+  def initialize(name, bin, ext)
+    @name = name
+    @bin = bin
+    @ext = ext
+  end
+
+  # From a config option
+  def self.from_config(name, config)
+    new(name, config[:bin], config[:ext])
+  end
+
+  def execute(transducer, raw_input)
+    `echo "#{raw_input}" | #{bin} #{transducer}`
+  end
+end
+
 def format_transductions(raw_transductions)
   lines = raw_transductions.split("\n")
   results = lines.map do |line|
@@ -37,20 +59,20 @@ class TestContext
 
   def transduce(input, specification)
     IMPLEMENTATIONS.each_pair do |name, config|
-      bin = config[:bin]
-      ext = config[:ext]
-      transducer_path = FST_DIR / "#{@transducer}.#{ext}"
+      impl = LookupImplementation.from_config(name, config)
+
+      transducer_path = FST_DIR / "#{@transducer}.#{impl.ext}"
       expected = specification[:contains]
       raise 'Invalid specification' if expected.nil?
 
-      _run_and_filter(name, bin, transducer_path, input, expected)
+      _run_and_filter(impl, transducer_path, input, expected)
     end
   end
 
   private
 
-  def _run_and_filter(name, bin, transducer_path, input, expected)
-    results = _run(bin, transducer_path, input)
+  def _run_and_filter(impl, transducer_path, input, expected)
+    results = _run(impl, transducer_path, input)
 
     relevant_tranductions =
       results.select { |(i, _)| i == input }
@@ -58,13 +80,13 @@ class TestContext
 
     return if relevant_tranductions.include?(expected)
 
-    warn("[#{name}] could not find transduction of #{input} to #{expected} " \
-         "in #{relevant_tranductions}")
+    warn("[#{impl.name}] could not find transduction of #{input} " \
+         "to #{expected} in #{relevant_tranductions}")
     exit(EX_FAILURE)
   end
 
-  def _run(suite, transducer, input)
-    raw_output = `echo "#{input}" | #{suite} #{transducer}`
+  def _run(impl, transducer, input)
+    raw_output = impl.execute(transducer, input)
     format_transductions(raw_output)
   end
 end
