@@ -1,6 +1,8 @@
-name: CI
+name: Notify Cree dictionary
 
-on: release
+on: 
+  release:
+    types: [published, unpublished]
 
 jobs:
   build:
