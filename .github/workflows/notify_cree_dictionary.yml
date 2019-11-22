@@ -2,7 +2,7 @@ name: Notify Cree dictionary
 
 on: 
   release:
-    types: [published, unpublished, edited]
+    types: [published, unpublished, edited, deleted]
 
 jobs:
   build:
