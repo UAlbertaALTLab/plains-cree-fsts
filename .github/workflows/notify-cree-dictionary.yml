@@ -1,0 +1,17 @@
+name: CI
+
+on: release
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Notify Cree dictionary
+      uses: defold/repository-dispatch@1.1.4
+      with: 
+        repo: UAlbertaALTLab/cree-intelligent-dictionary
+        token: ${{ secrets.CREE_DICTIONARY_UPDATE_TOKEN }}
+        user: Madoshakalaka
+        action: New release notification
