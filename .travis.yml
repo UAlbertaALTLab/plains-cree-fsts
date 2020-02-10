@@ -4,11 +4,9 @@
 #  - Apertium regularly deletes releases of hfst, breaking this build
 #  - macOS matches most of our dev machines ¯\_(ツ)_/¯
 os: osx
-
-# I wrote the test framework for my default Ruby, Ruby 2.3.1:
-language: ruby
-rvm:
-  - 2.3
+# macOS 10.14 Mojave
+osx_image: xcode11.3
+language: shell
 
 addons:
   homebrew:
@@ -32,7 +30,8 @@ script:
 
 deploy:
   provider: releases
-  api_key:
+  edge: true  # use dpl v2
+  token:
     secure: Q8RQiuKQwDTslt6XhRxUvp3T3knHJRQmgTKmZiq63nJv1vdqauip22cN5aqDn12bcXk0mvI5L94LssJo9WVZREaWm2z/rTJITVF9DKCn8wpdiVkiF62DaDJpROq/dgO9xhuPHiNWxfIEHXRRjQelVQqhoG2rxApHmwzbxY29wLHRYwd/SjivGY5ckNVct3XfSJhXKpk3j7h8ZpaD0cvaM+tuJ+mDRBjjoNLpga5t/eTeDbAmrIkppUdrlg+IosUCZJbKWlJ14a7GPNTtqyHPwS4KNaAR0SIEHKcOGbbLgBGiYXvSWqqMweaONzU9Cu3k3YY1yRUetObJbllZZTWCfOQAVOT/NPlo1SztWuUznC2CB96aVba+T3gUx/Rd/E+h9HqJFVGY9IvW64M0c2qyLbU5TK3R8H2V7AOHnyHQ7yPUR1vj4qdM3t2pzi4YoQdizAzMtPKUmYKScwJ4Ie9HOLPh6D6dlPtrKnLvNGmhH/a99/pabc8nTBKQU26eXTt3VeOZVOQpFzmMbHUa9lk5GECDpj5Z0LnUy/+ajPtDxhiZtx2ja9YrN1VroVguQEJ1c6HUl7CC0Q1TvfNJYzZymtube4JWIxjhB7r/dU8o1UvMtfYsc1ARkJbSjBqdbl7CQxVamihbo1iJ+kCrmyCP7pyeW3wjJNRdGeBPYWPOjWE=
   file:
     - src/crk-descriptive-analyzer.fomabin
@@ -43,6 +42,5 @@ deploy:
     - src/crk-strict-analyzer.hfstol
     - src/crk-normative-generator-with-morpheme-boundaries.fomabin
     - src/crk-normative-generator-with-morpheme-boundaries.hfstol
-  skip_cleanup: true
   on:
     tags: true
