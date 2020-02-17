@@ -13,4 +13,11 @@ FST.test('crk-descriptive-analyzer') do
   transduce "n'paw", contains: "nipâw+V+AI+Ind+Prs+3Sg"
   transduce "nin'pan", contains: "nipâw+V+AI+Ind+Prs+1Sg"
   transduce "neeyu", contains: "niya+Pron+Pers+1Sg"
+
+  # https://github.com/UAlbertaALTLab/plains-cree-fsts/issues/20
+  transduce "nepat", contains: "IC+nipâw+V+AI+Cnj+Prs+3Sg"
+  transduce "nipayan", contains: "pê-ayâw+V+AI+Ind+Prs+1Sg"
+  transduce "nipayan", contains: "nipâw+V+AI+Cnj+Prs+2Sg"
+  transduce "nipayan", contains: "nipâw+V+AI+Cnj+Prs+1Sg"
+  transduce "meyonipat", contains: "IC+PV/miyo+nipâw+V+AI+Cnj+Prs+3Sg"
 end
