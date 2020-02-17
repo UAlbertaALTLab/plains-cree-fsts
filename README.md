@@ -207,6 +207,10 @@ Then download all the sources again:
 
     make -j -B download
 
+And make the fsts like normal!
+
+    make -j fsts
+
 License
 -------
 
