@@ -17,12 +17,12 @@ src/morphology/affixes/noun_affixes.lexc:
 src/morphology/affixes/verb_affixes.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/affixes/verb_affixes.lexc -o $@
-src/morphology/stems/derivation_stems.lexc:
-	mkdir -p $(dir $@)
-	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/derivation_stems.lexc -o $@
 src/morphology/stems/noun_stems.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/noun_stems.lexc -o $@
+src/morphology/stems/numerals.lexc:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/numerals.lexc -o $@
 src/morphology/stems/particles.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/particles.lexc -o $@
