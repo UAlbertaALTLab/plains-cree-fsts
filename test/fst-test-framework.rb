@@ -97,10 +97,16 @@ class TestContext
 
   def transduce(input, specification)
     LookupImplementation.each do |fst_impl|
-      transducer_path = FST_DIR / "#{@transducer}.#{fst_impl.ext}"
       expected = specification[:contains]
       raise 'Invalid specification' if expected.nil?
 
+      # Skip implementation per-test
+      if specification[:skip_impl] && specification[:skip_impl].include?(fst_impl.id)
+        warn "[#{fst_impl.id}] skipping input: #{input}"
+        next
+      end
+
+      transducer_path = FST_DIR / "#{@transducer}.#{fst_impl.ext}"
       _run_and_filter(fst_impl, transducer_path, input, expected)
     end
   end

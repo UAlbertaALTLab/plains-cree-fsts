@@ -24,6 +24,8 @@ FST.test('crk-descriptive-analyzer') do
   # https://github.com/UAlbertaALTLab/cree-intelligent-dictionary/issues/370
   transduce "yahyanam", contains: "yâhyânam+V+AI+Ind+Prs+3Sg"
   transduce "niyahyanen", contains: "yâhyânam+V+AI+Ind+Prs+1Sg"
+
+  transduce "mân", contains: "mâna+Ipc+Err/Orth", skip_impl: [:foma]
 end
 
 FST.test('crk-normative-generator') do
