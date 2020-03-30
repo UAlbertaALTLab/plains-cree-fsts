@@ -17,9 +17,18 @@ src/morphology/affixes/noun_affixes.lexc:
 src/morphology/affixes/verb_affixes.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/affixes/verb_affixes.lexc -o $@
+src/morphology/stems/derivation_stems.lexc:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/derivation_stems.lexc -o $@
+src/morphology/stems/non_standard.lexc:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/non_standard.lexc -o $@
 src/morphology/stems/noun_stems.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/noun_stems.lexc -o $@
+src/morphology/stems/noun_vocatives.lexc:
+	mkdir -p $(dir $@)
+	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/noun_vocatives.lexc -o $@
 src/morphology/stems/numerals.lexc:
 	mkdir -p $(dir $@)
 	$(CURL) $(HTTP_PREFIX)/src/morphology/stems/numerals.lexc -o $@
