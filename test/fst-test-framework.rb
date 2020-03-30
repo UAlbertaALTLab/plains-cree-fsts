@@ -116,7 +116,7 @@ class TestContext
 
     return if relevant_tranductions.include?(expected)
 
-    warn("[#{impl.name}] could not find transduction of #{input} " \
+    warn("[#{impl.id}] could not find transduction of #{input} " \
          "to #{expected} in #{relevant_tranductions}")
     exit(EX_FAILURE)
   end
