@@ -1,7 +1,10 @@
-Plains Cree FSTs
-================
+~~Plains Cree FSTs~~
+====================
+
+> **No longer maintained**: please see https://github.com/giellalt/lang-crk
 
 [![Build Status](https://travis-ci.org/UAlbertaALTLab/plains-cree-fsts.svg?branch=master)](https://travis-ci.org/UAlbertaALTLab/plains-cree-fsts)
+
 
 
 kîkwây ôma?
